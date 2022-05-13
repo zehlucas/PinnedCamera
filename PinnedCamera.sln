@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinnedCamera", "PinnedCamera.csproj", "{5E8D91FD-D0B0-4303-9480-A05F4D5F3546}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E8D91FD-D0B0-4303-9480-A05F4D5F3546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8D91FD-D0B0-4303-9480-A05F4D5F3546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8D91FD-D0B0-4303-9480-A05F4D5F3546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8D91FD-D0B0-4303-9480-A05F4D5F3546}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66257D64-0B8B-4148-8A01-683AAD2EE2E6}
+	EndGlobalSection
+EndGlobal
