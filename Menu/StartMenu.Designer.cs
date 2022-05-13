@@ -35,12 +35,14 @@ namespace PinnedCamera.Menu
             this.picImgPreview = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
+            this.cmbSize = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picImgPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(297, 4);
+            this.btnStart.Location = new System.Drawing.Point(360, 4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 0;
@@ -59,10 +61,13 @@ namespace PinnedCamera.Menu
             // 
             // cmbCamera
             // 
+            this.cmbCamera.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCamera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCamera.FormattingEnabled = true;
             this.cmbCamera.Location = new System.Drawing.Point(61, 6);
             this.cmbCamera.Name = "cmbCamera";
-            this.cmbCamera.Size = new System.Drawing.Size(230, 21);
+            this.cmbCamera.Size = new System.Drawing.Size(293, 21);
             this.cmbCamera.TabIndex = 2;
             this.cmbCamera.SelectedIndexChanged += new System.EventHandler(this.cmbCamera_SelectedIndexChanged);
             // 
@@ -73,7 +78,7 @@ namespace PinnedCamera.Menu
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picImgPreview.Location = new System.Drawing.Point(15, 65);
             this.picImgPreview.Name = "picImgPreview";
-            this.picImgPreview.Size = new System.Drawing.Size(357, 235);
+            this.picImgPreview.Size = new System.Drawing.Size(420, 235);
             this.picImgPreview.TabIndex = 3;
             this.picImgPreview.TabStop = false;
             // 
@@ -88,7 +93,7 @@ namespace PinnedCamera.Menu
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(297, 29);
+            this.btnStop.Location = new System.Drawing.Point(360, 34);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 5;
@@ -96,11 +101,32 @@ namespace PinnedCamera.Menu
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btbStop_Click);
             // 
+            // cmbSize
+            // 
+            this.cmbSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSize.FormattingEnabled = true;
+            this.cmbSize.Location = new System.Drawing.Point(206, 36);
+            this.cmbSize.Name = "cmbSize";
+            this.cmbSize.Size = new System.Drawing.Size(148, 21);
+            this.cmbSize.TabIndex = 6;
+            this.cmbSize.SelectedIndexChanged += new System.EventHandler(this.cmbSize_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(173, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Size";
+            // 
             // StartMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 312);
+            this.ClientSize = new System.Drawing.Size(445, 312);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbSize);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.picImgPreview);
@@ -126,5 +152,7 @@ namespace PinnedCamera.Menu
         private System.Windows.Forms.PictureBox picImgPreview;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.ComboBox cmbSize;
+        private System.Windows.Forms.Label label3;
     }
 }
