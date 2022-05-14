@@ -34,7 +34,7 @@ namespace PinnedCamera.Menu
             cmbSize.Items.Add("Medium");
             cmbSize.Items.Add("Large");
 
-            cmbSize.SelectedIndex = 0;
+            //cmbSize.SelectedIndex = 0;
             //cmbCamera.SelectedIndex = 2;
             //videoCaptureDevice = new VideoCaptureDevice();
         }
@@ -48,12 +48,18 @@ namespace PinnedCamera.Menu
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
             videoCaptureDevice.Start();
             picImgPreview.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            for(int i = 0; i < 2; i++)
+            {
+                UpdateWebcamViewSize();
+            }
+            
         }
 
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
-            imageSize = bitmap.Size;
+            imageSize = new Size(bitmap.Size.Width, bitmap.Size.Height);
             picImgPreview.Image = (Bitmap)eventArgs.Frame.Clone();
         }
 
@@ -74,6 +80,7 @@ namespace PinnedCamera.Menu
             webcamView = new WebcamView.WebcamView(monikerString: filterInfoCollection[cmbCamera.SelectedIndex].MonikerString);
             webcamView.TopMost = true;
             webcamView.Show();
+
             webcamView.Size = webcamViewSize;
             btnStart.Enabled = false;
             btnStop.Enabled = true;
@@ -102,6 +109,11 @@ namespace PinnedCamera.Menu
 
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
+            UpdateWebcamViewSize();
+        }
+
+        private void UpdateWebcamViewSize()
+        {
             if (cmbSize.SelectedIndex == 0)
             {
                 webcamViewSize = new Size(imageSize.Width / 3, imageSize.Height / 3);
@@ -114,7 +126,8 @@ namespace PinnedCamera.Menu
             {
                 webcamViewSize = imageSize;
             }
-            if(webcamView != null)
+            //MessageBox.Show(imageSize.ToString());
+            if (webcamView != null)
             {
                 webcamView.Size = webcamViewSize;
             }

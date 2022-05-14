@@ -32,11 +32,11 @@ namespace PinnedCamera.Menu
             this.btnStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCamera = new System.Windows.Forms.ComboBox();
-            this.picImgPreview = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.cmbSize = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.picImgPreview = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picImgPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,17 +70,6 @@ namespace PinnedCamera.Menu
             this.cmbCamera.Size = new System.Drawing.Size(293, 21);
             this.cmbCamera.TabIndex = 2;
             this.cmbCamera.SelectedIndexChanged += new System.EventHandler(this.cmbCamera_SelectedIndexChanged);
-            // 
-            // picImgPreview
-            // 
-            this.picImgPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picImgPreview.Location = new System.Drawing.Point(15, 65);
-            this.picImgPreview.Name = "picImgPreview";
-            this.picImgPreview.Size = new System.Drawing.Size(420, 235);
-            this.picImgPreview.TabIndex = 3;
-            this.picImgPreview.TabStop = false;
             // 
             // label2
             // 
@@ -120,6 +109,17 @@ namespace PinnedCamera.Menu
             this.label3.TabIndex = 7;
             this.label3.Text = "Size";
             // 
+            // picImgPreview
+            // 
+            this.picImgPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picImgPreview.Location = new System.Drawing.Point(15, 65);
+            this.picImgPreview.Name = "picImgPreview";
+            this.picImgPreview.Size = new System.Drawing.Size(420, 235);
+            this.picImgPreview.TabIndex = 3;
+            this.picImgPreview.TabStop = false;
+            // 
             // StartMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,10 +149,10 @@ namespace PinnedCamera.Menu
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbCamera;
-        private System.Windows.Forms.PictureBox picImgPreview;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.ComboBox cmbSize;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox picImgPreview;
     }
 }
