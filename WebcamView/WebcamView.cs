@@ -19,7 +19,7 @@ namespace PinnedCamera.WebcamView
         private Point dragCursorPoint;
         private Point dragFormPoint;
         private string monikerString;
-        VideoCaptureDevice videoCaptureDevice;
+        public VideoCaptureDevice videoCaptureDevice;
 
         public WebcamView()
         {
@@ -47,21 +47,10 @@ namespace PinnedCamera.WebcamView
             picWebcamView.Top = 0;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            using (GraphicsPath gp = new GraphicsPath())
-            {
-                gp.AddEllipse(0, 0, this.Width - 1, this.Height - 1);
-                Region = new Region(gp);
-                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                e.Graphics.DrawEllipse(new Pen(new SolidBrush(this.BackColor), 1), 0, 0, this.Width - 1, this.Height - 1);
-            }
-        }
-
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            picWebcamView.Image = (Bitmap)eventArgs.Frame.Clone(); 
+            picWebcamView.Image = (Bitmap)eventArgs.Frame.Clone();
+            eventArgs.Frame.Dispose();
         }
 
         private void WebcamView_MouseDown(object sender, MouseEventArgs e)

@@ -9,10 +9,9 @@ namespace PinnedCamera.Menu
     public partial class StartMenu : Form
     {
         FilterInfoCollection filterInfoCollection;
-        VideoCaptureDevice videoCaptureDevice;
         WebcamView.WebcamView webcamView;
 
-        Size imageSize;
+        Size screenSize;
         Size webcamViewSize;
 
         public StartMenu()
@@ -29,43 +28,24 @@ namespace PinnedCamera.Menu
             }
             btnStart.Enabled = false;
             btnStop.Enabled = false;
-
-            cmbSize.Items.Add("Small");
-            cmbSize.Items.Add("Medium");
-            cmbSize.Items.Add("Large");
+            
+            screenSize = new Size(Screen.FromControl(this).Bounds.Width, Screen.FromControl(this).Bounds.Height);
+            webcamViewSize = new Size(screenSize.Width / trackSize.Value, screenSize.Height / trackSize.Value);
 
             //cmbSize.SelectedIndex = 0;
             //cmbCamera.SelectedIndex = 2;
-            //videoCaptureDevice = new VideoCaptureDevice();
+            //3wse'ptureDevice = new VideoCaptureDevice();
         }
 
         private void cmbCamera_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnStart.Enabled = true;
-            StopCam();
-
-            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cmbCamera.SelectedIndex].MonikerString);
-            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
-            videoCaptureDevice.Start();
-            picImgPreview.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            for(int i = 0; i < 2; i++)
-            {
-                UpdateWebcamViewSize();
-            }
-            
         }
 
-        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
-            imageSize = new Size(bitmap.Size.Width, bitmap.Size.Height);
-            picImgPreview.Image = (Bitmap)eventArgs.Frame.Clone();
-        }
 
         private void StartMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            StopCam();
+
             if (webcamView != null)
             {
                 webcamView.StopCam();
@@ -76,7 +56,7 @@ namespace PinnedCamera.Menu
         private void btnStart_Click(object sender, EventArgs e)
         {
             // Stop cam because it will be used in WebCamview
-            StopCam();
+
             webcamView = new WebcamView.WebcamView(monikerString: filterInfoCollection[cmbCamera.SelectedIndex].MonikerString);
             webcamView.TopMost = true;
             webcamView.Show();
@@ -84,15 +64,7 @@ namespace PinnedCamera.Menu
             webcamView.Size = webcamViewSize;
             btnStart.Enabled = false;
             btnStop.Enabled = true;
-        }
-
-        private void StopCam()
-        {
-            //if other camera is running, stop it
-            if (videoCaptureDevice != null)
-            {
-                videoCaptureDevice.Stop();
-            }
+            cmbCamera.Enabled = false;
         }
 
         private void btbStop_Click(object sender, EventArgs e)
@@ -103,30 +75,13 @@ namespace PinnedCamera.Menu
                 webcamView.Dispose();
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
-                videoCaptureDevice.Start();
+                cmbCamera.Enabled = true;
             }
         }
 
-        private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
+        private void trackSize_Scroll(object sender, EventArgs e)
         {
-            UpdateWebcamViewSize();
-        }
-
-        private void UpdateWebcamViewSize()
-        {
-            if (cmbSize.SelectedIndex == 0)
-            {
-                webcamViewSize = new Size(imageSize.Width / 3, imageSize.Height / 3);
-            }
-            if (cmbSize.SelectedIndex == 1)
-            {
-                webcamViewSize = new Size(imageSize.Width / 2, imageSize.Height / 2);
-            }
-            if (cmbSize.SelectedIndex == 2)
-            {
-                webcamViewSize = imageSize;
-            }
-            //MessageBox.Show(imageSize.ToString());
+            webcamViewSize = new Size(screenSize.Width / trackSize.Value, screenSize.Height / trackSize.Value);
             if (webcamView != null)
             {
                 webcamView.Size = webcamViewSize;
