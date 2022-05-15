@@ -29,42 +29,42 @@ namespace PinnedCamera.WebcamView
         /// </summary>
         private void InitializeComponent()
         {
-            this.picWebcamView = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picWebcamView)).BeginInit();
+            this.playerWebcamView = new AForge.Controls.VideoSourcePlayer();
             this.SuspendLayout();
             // 
-            // picWebcamView
+            // playerWebcamView
             // 
-            this.picWebcamView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picWebcamView.Location = new System.Drawing.Point(0, 0);
-            this.picWebcamView.Name = "picWebcamView";
-            this.picWebcamView.Size = new System.Drawing.Size(800, 450);
-            this.picWebcamView.TabIndex = 0;
-            this.picWebcamView.TabStop = false;
-            this.picWebcamView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WebcamView_MouseDown);
-            this.picWebcamView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.WebcamView_MouseMove);
-            this.picWebcamView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.WebcamView_MouseUp);
+            this.playerWebcamView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.playerWebcamView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.playerWebcamView.BorderColor = System.Drawing.Color.Transparent;
+            this.playerWebcamView.Location = new System.Drawing.Point(0, 0);
+            this.playerWebcamView.Margin = new System.Windows.Forms.Padding(0);
+            this.playerWebcamView.Name = "playerWebcamView";
+            this.playerWebcamView.Size = new System.Drawing.Size(537, 396);
+            this.playerWebcamView.TabIndex = 1;
+            this.playerWebcamView.Text = "videoSourcePlayer";
+            this.playerWebcamView.VideoSource = null;
+            this.playerWebcamView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.playerWebcamView_MouseDown);
+            this.playerWebcamView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.playerWebcamView_MouseMove);
+            this.playerWebcamView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.playerWebcamView_MouseUp);
             // 
             // WebcamView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(537, 396);
             this.ControlBox = false;
-            this.Controls.Add(this.picWebcamView);
+            this.Controls.Add(this.playerWebcamView);
             this.Name = "WebcamView";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WebcamView_FormClosing);
             this.Load += new System.EventHandler(this.WebcamView_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WebcamView_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.WebcamView_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.WebcamView_MouseUp);
-            ((System.ComponentModel.ISupportInitialize)(this.picWebcamView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox picWebcamView;
+        private AForge.Controls.VideoSourcePlayer playerWebcamView;
     }
 }

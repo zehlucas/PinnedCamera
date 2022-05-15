@@ -36,31 +36,19 @@ namespace PinnedCamera.WebcamView
 
         private void WebcamView_Load(object sender, EventArgs e)
         {
-            
             videoCaptureDevice = new VideoCaptureDevice(monikerString);
-            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
-            videoCaptureDevice.Start();
-
-            // To fill image to picturebox size
-            picWebcamView.SizeMode = PictureBoxSizeMode.StretchImage;
-            picWebcamView.Left = 0;
-            picWebcamView.Top = 0;
+            playerWebcamView.VideoSource = videoCaptureDevice;
+            playerWebcamView.Start();
         }
 
-        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            picWebcamView.Image = (Bitmap)eventArgs.Frame.Clone();
-            eventArgs.Frame.Dispose();
-        }
-
-        private void WebcamView_MouseDown(object sender, MouseEventArgs e)
+        private void playerWebcamView_MouseDown(object sender, MouseEventArgs e)
         {
             dragging = true;
             dragCursorPoint = Cursor.Position;
             dragFormPoint = this.Location;
         }
 
-        private void WebcamView_MouseMove(object sender, MouseEventArgs e)
+        private void playerWebcamView_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
             {
@@ -69,7 +57,7 @@ namespace PinnedCamera.WebcamView
             }
         }
 
-        private void WebcamView_MouseUp(object sender, MouseEventArgs e)
+        private void playerWebcamView_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
         }
